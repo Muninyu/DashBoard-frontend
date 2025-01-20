@@ -3,34 +3,34 @@ import { HttpClient } from '@angular/common/http';
 import { AfterViewInit, Component, ElementRef, Inject, OnInit, PLATFORM_ID, ViewChild } from '@angular/core';
 import * as Highcharts from 'highcharts';
 
-export interface CDAData {
-  cdadate: string;
-  cda01: number;
-  cda02: number;
-  cda03: number;
-  cdaairConsume: number;
-  cdaairConsumeUnit: number;
+export interface CHData {
+  chdate: string;
+  ch01: number;
+  ch02: number;
+  ch03: number;
+  temperature: number;
+  enthalpy: number;
 }
 
 @Component({
-  selector: 'app-chart1',
+  selector: 'app-chart2',
   standalone: true,
   imports: [],
-  templateUrl: './chart1.component.html',
-  styleUrl: './chart1.component.css'
+  templateUrl: './chart2.component.html',
+  styleUrl: './chart2.component.css'
 })
-export class Chart1Component implements OnInit {
+export class Chart2Component implements OnInit {
   @ViewChild('chartContainer', { static: false }) chartContainer!: ElementRef;
 
-  CDAData: string[] = [];
+  CHData: string[] = [];
   constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object) {}
   
-  CDADate: string[] = [];
-  CDA01: number[] = [];
-  CDA02: number[] = [];
-  CDA03: number[] = [];
-  CDAAirConsumn: number[] = [];
-  CDAAirConsumnUnit: number[] = [];
+  CHDate: string[] = [];
+  CH01: number[] = [];
+  CH02: number[] = [];
+  CH03: number[] = [];
+  Temperature: number[] = [];
+  Enthalpy: number[] = [];
 
   private formatDate(dateString: string): string {
     const date = new Date(dateString);
@@ -41,15 +41,15 @@ export class Chart1Component implements OnInit {
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      this.http.get<CDAData[]>('http://localhost:8080/api/CDAData').subscribe({
-        next: (data: CDAData[]) => {
+      this.http.get<CHData[]>('http://localhost:8080/api/CHData').subscribe({
+        next: (data: CHData[]) => {
           data.forEach((item) => {
-            this.CDADate.push(this.formatDate(item.cdadate));
-            this.CDA01.push(item.cda01);
-            this.CDA02.push(item.cda02);
-            this.CDA03.push(item.cda03);
-            this.CDAAirConsumn.push(item.cdaairConsume);
-            this.CDAAirConsumnUnit.push(item.cdaairConsumeUnit);
+            this.CHDate.push(this.formatDate(item.chdate));
+            this.CH01.push(item.ch01);
+            this.CH02.push(item.ch02);
+            this.CH03.push(item.ch03);
+            this.Temperature.push(item.temperature);
+            this.Enthalpy.push(item.enthalpy);
           });
           this.initializeChart();
         },
@@ -65,10 +65,10 @@ export class Chart1Component implements OnInit {
             type: 'column',
         },
         title: {
-            text: 'CDA'
+            text: 'CH'
         },
         xAxis: {
-            categories: this.CDADate,
+            categories: this.CHDate,
             crosshair: true,
             accessibility: {
                 description: 'Countries'
@@ -104,32 +104,32 @@ export class Chart1Component implements OnInit {
             {
                 name: 'CDA#01',
                 type: 'column',
-                data: this.CDA01,
+                data: this.CH01,
                 yAxis: 0,
             },
             {
                 name: 'CDA#02',
                 type: 'column',
-                data: this.CDA02,
+                data: this.CH02,
                 yAxis: 0
             },
             {
                 name: 'CDA#03',
                 type: 'column',
-                data: this.CDA03,
+                data: this.CH03,
                 yAxis: 0
             },
             {
                 name: 'CDA用氣量',
                 type: 'line',
-                data: this.CDAAirConsumn,
+                data: this.Temperature,
                 yAxis: 1,
                 color: 'red'
             },
             {
                 name: '單位氣體用電量',
                 type: 'line',
-                data: this.CDAAirConsumnUnit,
+                data: this.Enthalpy,
                 yAxis: 2,
                 color: 'blue'
             }

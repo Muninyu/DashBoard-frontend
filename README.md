@@ -1,3 +1,5 @@
+![image](https://github.com/user-attachments/assets/0d8f1a1b-32bb-4bf2-a7a7-08fd62875264)
+
 # DashboardFrontend
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.10.

@@ -1,29 +1,7 @@
 ![image](https://github.com/user-attachments/assets/0d8f1a1b-32bb-4bf2-a7a7-08fd62875264)
 
-# DashboardFrontend
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.10.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+● 專案內容說明 : 簡易版工廠DashBoard(前端部分)，採用Angular框架進行製作，對後端發出RESTful請求以獲取相關資料後，再以highcharts進行圖表呈現
+● 專案時間 : 2025/1 – ...
+● 使用技術 : HTML、CSS、TypeScript、BootStrap、RESTful、Angular、highcharts
+● 使用工具 : VScode
+● 專案環境 : OS - Windows、Web Server - Tomcat、DB - MySQL
